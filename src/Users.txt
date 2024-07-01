@@ -1,0 +1,2 @@
+cavinhartono,master123,admin
+fikiazhar,kasir123,cashier

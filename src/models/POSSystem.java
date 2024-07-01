@@ -3,6 +3,8 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import handler.ProductFileHandler;
+import handler.UserFileHandle;
 import roles.User;
 
 public class POSSystem {
@@ -42,5 +44,25 @@ public class POSSystem {
 
   public List<User> getUsers() {
     return Users;
+  }
+
+  public void loadProducts(String fileName) {
+    List<Product> Products = ProductFileHandler.loadProducts(fileName);
+
+    for (Product product : Products) {
+      inventory.setProduct(product);
+    }
+  }
+
+  public void saveProducts(String fileName) {
+    ProductFileHandler.saveProducts(inventory.getProducts(), fileName);
+  }
+
+  public void loadUsers(String fileName) {
+    Users = UserFileHandle.loadUsers(fileName);
+  }
+
+  public void saveUsers(String fileName) {
+    UserFileHandle.saveUsers(Users, fileName);
   }
 }

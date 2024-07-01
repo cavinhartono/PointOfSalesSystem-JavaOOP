@@ -13,9 +13,10 @@ public class App {
     public static void main(String[] args) throws Exception {
         POSSystem system = new POSSystem();
 
-        // Register user
-        system.getUsers().add(new Admin("cavinhartono", "master123"));
-        system.getUsers().add(new Cashier("fikiazhar", "kasir123"));
+        // system.getUsers().add(new Admin("cavinhartono", "master123"));
+        // system.getUsers().add(new Cashier("fikiazhar", "kasir123"));
+        system.loadUsers("C:\\Project\\PointOfSale-OOP\\src\\Users.txt");
+        system.loadProducts("C:\\Project\\PointOfSale-OOP\\src\\Products.txt");
 
         System.out.print("Masukan username: ");
         String username = ip.nextLine();
@@ -111,15 +112,18 @@ public class App {
                             }
                             System.out.println("==/ Menampilkan Semua Produk /==");
                         } else {
-
+                            System.err.println("Tidak dapat diakses! Hanya Kasir yang bisa menampilkan semua produk.");
                         }
                         break;
                     case 6:
+                        system.getReport().printReport();
                         break;
                     case 7:
                         isExit = true;
+                        system.saveProducts("Products.txt");
                         break;
                     default:
+                        System.err.println("Invalid pilihan! Pilih yang ada di menu.");
                         break;
                 }
             }

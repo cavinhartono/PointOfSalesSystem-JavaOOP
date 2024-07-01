@@ -2,7 +2,9 @@ package handler;
 
 import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,5 +33,16 @@ public class ProductFileHandler {
     }
 
     return Products;
+  }
+
+  public static void saveProducts(List<Product> Products, String fileName) {
+    try (BufferedWriter wr = new BufferedWriter(new FileWriter(fileName))) {
+      for (Product product : Products) {
+        wr.write(product.getProductID() + "," + product.getName() + "," + product.getPrice() + "," + product.getQty());
+        wr.newLine();
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
