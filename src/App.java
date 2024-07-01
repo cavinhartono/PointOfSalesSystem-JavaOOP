@@ -27,11 +27,12 @@ public class App {
         if (auth != null) {
             boolean isExit = false;
 
-            System.out.println("Sukses!");
+            System.out.println("\nSukses!");
             System.out.println("Selamat datang, " + auth.getUsername() + ".");
             while (!isExit) {
                 int number = 1;
-                String[] Menus = { "Tambah Produk", "Update Stok Produk", "Mencari Produk", "Menampilkan Semua Produk",
+                String[] Menus = { "\nTambah Produk", "Update Stok Produk", "Mencari Produk",
+                        "Menampilkan Semua Produk",
                         "Menjual Produk", "Menampilkan Laporan", "Keluar" };
 
                 for (String menu : Menus) {
