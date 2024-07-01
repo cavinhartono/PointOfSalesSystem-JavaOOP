@@ -120,7 +120,7 @@ public class App {
                         break;
                     case 7:
                         isExit = true;
-                        system.saveProducts("Products.txt");
+                        system.saveProducts("C:\\Project\\PointOfSale-OOP\\src\\Products.txt");
                         break;
                     default:
                         System.err.println("Invalid pilihan! Pilih yang ada di menu.");

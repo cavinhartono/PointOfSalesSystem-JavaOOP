@@ -1,1 +1,2 @@
-P002,Laptop Asus,6.00,24
+P002,Laptop Asus,6.0,24
+P012,Monitor LG C4,12.0,20
