@@ -1,114 +1,21 @@
 ## Class Table
 
 <table>
-  <thead>
-    <tr>
-      <th>
-        #
-      </th>
-      <th>
-        Name
-      </th>
-      <th>
-        Attribute
-      </th>
-    </tr>
-  </thead>
   <tbody>
     <tr>
       <td>
-        1.
+        362379011
       </td>
       <td>
-        User
-      </td>
-      <td>
-        User
+        Muhammad Cavin Hartono Putra
       </td>
     </tr>
     <tr>
       <td>
-        2.
+        362379008
       </td>
       <td>
-        Auth
-      </td>
-    </tr>
-    <tr>
-      <td>
-        3.
-      </td>
-      <td>
-        Product
-      </td>
-      <td>
-        User
-      </td>
-    </tr>
-    <tr>
-      <td>
-        4.
-      </td>
-      <td>
-        PointOfSaleSystem
-      </td>
-      <td>
-        User
-      </td>
-    </tr>
-    <tr>
-      <td>
-        5.
-      </td>
-      <td>
-        Transaction
-      </td>
-      <td>
-        User
-      </td>
-    </tr>
-    <tr>
-      <td>
-        6.
-      </td>
-      <td>
-        Inventory
-      </td>
-      <td>
-        User
-      </td>
-    </tr>
-    <tr>
-      <td>
-        7.
-      </td>
-      <td>
-        Cashier
-      </td>
-      <td>
-        User
-      </td>
-    </tr>
-    <tr>
-      <td>
-        8.
-      </td>
-      <td>
-        Admin
-      </td>
-      <td>
-        User
-      </td>
-    </tr>
-    <tr>
-      <td>
-        1.
-      </td>
-      <td>
-        User
-      </td>
-      <td>
-        User
+        Fiki Azhar
       </td>
     </tr>
   </tbody>
