@@ -15,8 +15,9 @@ public class App {
 
         // system.getUsers().add(new Admin("cavinhartono", "master123"));
         // system.getUsers().add(new Cashier("fikiazhar", "kasir123"));
-        system.loadUsers("C:\\Project\\PointOfSale-OOP\\src\\Users.txt");
-        system.loadProducts("C:\\Project\\PointOfSale-OOP\\src\\Products.txt");
+        system.loadUsers("src\\Users.txt");
+        system.loadProducts("src\\Products.txt");
+        system.loadReports("src\\data\\Reports.txt");
 
         System.out.print("Masukan username: ");
         String username = ip.nextLine();
@@ -27,13 +28,14 @@ public class App {
         if (auth != null) {
             boolean isExit = false;
 
-            System.out.println("\nSukses!");
+            System.out.println("Sukses!\n");
             System.out.println("Selamat datang, " + auth.getUsername() + ".");
             while (!isExit) {
                 int number = 1;
-                String[] Menus = { "\nTambah Produk", "Update Stok Produk", "Mencari Produk",
-                        "Menampilkan Semua Produk",
-                        "Menjual Produk", "Menampilkan Laporan", "Keluar" };
+                String[] Menus = { "Tambah Produk", "Update Stok Produk", "Mencari Produk", "Menampilkan Semua Produk",
+                        "Menjual Produk", "Laporan Hari Ini", "Laporan Kemarin", "Keluar" };
+
+                System.out.println();
 
                 for (String menu : Menus) {
                     System.out.println("Tekan " + number + " " + menu);
@@ -41,7 +43,8 @@ public class App {
                 }
                 System.out.print("Pilih: ");
                 int option = ip.nextInt();
-                ip.nextLine();
+
+                System.out.println();
 
                 Action action = (Action) auth;
 
@@ -63,7 +66,7 @@ public class App {
                             action.addProduct(system.getInventory(), name, productID, price, qty);
                             System.out.println("Produk berhasil ditambahkan.");
                         } else {
-                            System.err.println("Tidak dapat diakses! Hanya Admin bisa menambahkan produk.");
+                            System.err.println("\nTidak dapat diakses! Hanya Admin bisa menambahkan produk.");
                         }
                         break;
                     case 2:
@@ -78,13 +81,13 @@ public class App {
                             action.upgradeProductInQty(system.getInventory(), productID, qty);
                             System.out.println("Stok produk berhasil ditambahkan.");
                         } else {
-                            System.err.println("Tidak dapat diakses! Hanya Admin bisa menambahkan produk.");
+                            System.err.println("\nTidak dapat diakses! Hanya Admin bisa menambahkan produk.");
                         }
                         break;
                     case 3:
                         System.out.println("\n==/ Mencari Produk /==");
                         System.out.print("Masukan No. Produk     : ");
-                        String productID = ip.nextLine();
+                        String productID = ip.next();
                         System.out.println("==/ Mencari Produk /==");
 
                         Product product = system.getInventory().searchProductByID(productID);
@@ -93,7 +96,7 @@ public class App {
                                     "Produk ditemukan: " + "ID:" + product.getProductID() + " " + product.getName()
                                             + " | Rp. " + product.getPrice() + ", Tersisa: " + product.getQty());
                         } else {
-                            System.out.println("Produk tidak ditemukan.");
+                            System.out.println("\nProduk tidak ditemukan.");
                         }
                         break;
                     case 4:
@@ -112,19 +115,31 @@ public class App {
                                         + " | Rp. " + p.getPrice() + ", Tersisa: " + p.getQty());
                             }
                             System.out.println("==/ Menampilkan Semua Produk /==");
+
+                            System.out.println("\n==/ Menjual Produk /==");
+                            System.out.print("Masukan No. Produk: ");
+                            String IDProduct = ip.next();
+                            System.out.print("Jumlah            : ");
+                            int qty = ip.nextInt();
+                            System.out.println("==/ Menjual Produk /==");
+                            action.sellProduct(system.getInventory(), system.getReport(), IDProduct, qty);
                         } else {
-                            System.err.println("Tidak dapat diakses! Hanya Kasir yang bisa menampilkan semua produk.");
+                            System.err
+                                    .println("\nTidak dapat diakses! Hanya Kasir yang bisa menampilkan semua produk.");
                         }
                         break;
                     case 6:
-                        system.getReport().printReport();
+                        system.getReport().printToday();
                         break;
                     case 7:
+                        system.getReport().printYesterday();
+                        break;
+                    case 8:
                         isExit = true;
-                        system.saveProducts("C:\\Project\\PointOfSale-OOP\\src\\Products.txt");
+                        system.saveProducts("src\\Products.txt");
                         break;
                     default:
-                        System.err.println("Invalid pilihan! Pilih yang ada di menu.");
+                        System.err.println("\nInvalid pilihan! Pilih yang ada di menu.");
                         break;
                 }
             }

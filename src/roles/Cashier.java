@@ -1,5 +1,8 @@
 package roles;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import models.Inventory;
 import models.Product;
 import models.Report;
@@ -19,8 +22,9 @@ public class Cashier extends User implements Action {
   public void sellProduct(Inventory inventory, Report report, String productID, int qty) {
     Product product = inventory.searchProductByID(productID);
     if (product != null && product.isSellProduct(qty)) {
+      String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
       double totalPrice = product.getPrice() * qty;
-      Transaction transaction = new Transaction(productID, qty, totalPrice, getUsername());
+      Transaction transaction = new Transaction(date, productID, qty, totalPrice, getUsername());
       report.setTransaction(transaction);
       report.printStruct(transaction, product);
     } else {

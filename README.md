@@ -1,5 +1,3 @@
-## Class Table
-
 <table>
   <tbody>
     <tr>

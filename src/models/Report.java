@@ -1,7 +1,10 @@
 package models;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Report {
   private List<Transaction> Transactions;
@@ -28,10 +31,31 @@ public class Report {
     System.out.println("==/ Struk /==");
   }
 
-  public void printReport() {
-    System.out.println("==/ Sales Report /==");
-    for (Transaction transaction : Transactions) {
+  public void printYesterday() {
+    Date date = new Date();
+    date.setTime(date.getTime() - 24 * 60 * 60 * 1000);
+
+    List<Transaction> Yesterdays = Transactions.stream()
+        .filter(transaction -> transaction.getDate().equals(
+            new SimpleDateFormat("yyyy-MM-dd").format(date))) // Kemarin
+        .collect(Collectors.toList());
+
+    System.out.println("\n/== Laporan Kemarin /==");
+    for (Transaction transaction : Yesterdays) {
       System.out.println(transaction);
     }
+    System.out.println("/== Laporan Kemarin /==");
+  }
+
+  public void printToday() {
+    List<Transaction> Todays = Transactions.stream()
+        .filter(transaction -> transaction.getDate().equals(new SimpleDateFormat("yyyy-MM-dd").format(new Date())))
+        .collect(Collectors.toList());
+
+    System.out.println("\n/== Laporan Hari Ini /==");
+    for (Transaction transaction : Todays) {
+      System.out.println(transaction);
+    }
+    System.out.println("/== Laporan Hari Ini /==");
   }
 }

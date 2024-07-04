@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import handler.ProductFileHandler;
+import handler.ReportFileHandle;
 import handler.UserFileHandle;
 import roles.User;
 
@@ -64,5 +65,13 @@ public class POSSystem {
 
   public void saveUsers(String fileName) {
     UserFileHandle.saveUsers(Users, fileName);
+  }
+
+  public void loadReports(String fileName) {
+    ReportFileHandle.loadReports(fileName);
+  }
+
+  public void saveReports(String fileName) {
+    ReportFileHandle.saveReports(report, fileName);
   }
 }
