@@ -31,16 +31,12 @@ public class App {
             System.out.println("Sukses!\n");
             System.out.println("Selamat datang, " + auth.getUsername() + ".");
             while (!isExit) {
-                int number = 1;
                 String[] Menus = { "Tambah Produk", "Update Stok Produk", "Mencari Produk", "Menampilkan Semua Produk",
                         "Menjual Produk", "Laporan Hari Ini", "Laporan Kemarin", "Keluar" };
 
                 System.out.println();
 
-                for (String menu : Menus) {
-                    System.out.println("Tekan " + number + " " + menu);
-                    number++;
-                }
+                printMenu(Menus);
                 System.out.print("Pilih: ");
                 int option = ip.nextInt();
 
@@ -73,7 +69,7 @@ public class App {
                         if (auth instanceof Admin) {
                             System.out.println("\n==/ Update Stok Produk /==");
                             System.out.print("Masukan No. Produk     : ");
-                            String productID = ip.nextLine();
+                            String productID = ip.next();
                             System.out.print("Masukan Tambahan Jumlah : ");
                             int qty = ip.nextInt();
                             System.out.println("==/ Update Stok Produk /==");
@@ -93,7 +89,7 @@ public class App {
                         Product product = system.getInventory().searchProductByID(productID);
                         if (product != null) {
                             System.out.println(
-                                    "Produk ditemukan: " + "ID:" + product.getProductID() + " " + product.getName()
+                                    "\nProduk ditemukan: " + "ID:" + product.getProductID() + " " + product.getName()
                                             + " | Rp. " + product.getPrice() + ", Tersisa: " + product.getQty());
                         } else {
                             System.out.println("\nProduk tidak ditemukan.");
@@ -137,6 +133,7 @@ public class App {
                     case 8:
                         isExit = true;
                         system.saveProducts("src\\Products.txt");
+                        system.saveReports("src\\data\\Reports.txt");
                         break;
                     default:
                         System.err.println("\nInvalid pilihan! Pilih yang ada di menu.");
@@ -145,6 +142,14 @@ public class App {
             }
         } else {
             System.err.println("Login Gagal! Sesuaikan username dan password.");
+        }
+    }
+
+    public static void printMenu(String[] Menus) {
+        int number = 1;
+        for (String menu : Menus) {
+            System.out.println("Tekan " + number + " untuk " + menu);
+            number++;
         }
     }
 }

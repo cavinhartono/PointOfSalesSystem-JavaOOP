@@ -68,7 +68,7 @@ public class POSSystem {
   }
 
   public void loadReports(String fileName) {
-    ReportFileHandle.loadReports(fileName);
+    report = ReportFileHandle.loadReports(fileName);
   }
 
   public void saveReports(String fileName) {

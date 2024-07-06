@@ -20,7 +20,7 @@ public class Inventory {
 
   public Product searchProductByID(String productID) {
     for (Product product : Products) {
-      if (product.getProductID().equals(productID)) {
+      if (product.getProductID().equalsIgnoreCase(productID)) {
         return product;
       }
     }
