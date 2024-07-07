@@ -39,6 +39,7 @@ public class App {
                 printMenu(Menus);
                 System.out.print("Pilih: ");
                 int option = ip.nextInt();
+                ip.nextLine();
 
                 System.out.println();
 
@@ -69,7 +70,7 @@ public class App {
                         if (auth instanceof Admin) {
                             System.out.println("\n==/ Update Stok Produk /==");
                             System.out.print("Masukan No. Produk     : ");
-                            String productID = ip.next();
+                            String productID = ip.nextLine();
                             System.out.print("Masukan Tambahan Jumlah : ");
                             int qty = ip.nextInt();
                             System.out.println("==/ Update Stok Produk /==");
@@ -83,7 +84,7 @@ public class App {
                     case 3:
                         System.out.println("\n==/ Mencari Produk /==");
                         System.out.print("Masukan No. Produk     : ");
-                        String productID = ip.next();
+                        String productID = ip.nextLine();
                         System.out.println("==/ Mencari Produk /==");
 
                         Product product = system.getInventory().searchProductByID(productID);
@@ -114,7 +115,7 @@ public class App {
 
                             System.out.println("\n==/ Menjual Produk /==");
                             System.out.print("Masukan No. Produk: ");
-                            String IDProduct = ip.next();
+                            String IDProduct = ip.nextLine();
                             System.out.print("Jumlah            : ");
                             int qty = ip.nextInt();
                             System.out.println("==/ Menjual Produk /==");
